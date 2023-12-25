@@ -1,0 +1,19 @@
+---
+- name: first playbook
+  hosts: dev
+  tasks:
+    - name: install httpd software
+      ansible.builtin.yum:
+        name: httpd
+        state: present
+
+    - name: start web server
+      service:
+        name: httpd
+        state: started
+
+    - name: copying the file
+      copy:
+        src: mani.html
+        dest: /var/www/html/mani.html
+
